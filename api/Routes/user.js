@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/authverify');
-router.get('/',auth,(req,res)=>{
+router.get('/',(req,res)=>{
     User.find({},(err,doc)=>{
         if(!err)
         {
