@@ -42,7 +42,7 @@ router.get('/:id',(req,res,next)=>{
 })
 router.post('/signup',(req,res,next)=>{
 
-    bcrypt.hash(req.body.pasword,10,(err,hash)=>{
+    bcrypt.hash(req.body.password,10,(err,hash)=>{
         if(err)
         {
             return res.status(500).json({
@@ -56,7 +56,7 @@ router.post('/signup',(req,res,next)=>{
                 email:req.body.email,
                 phoneNumber:req.body.phoneNumber,
                 city:req.body.city,
-                pasword:hash,
+                password:hash,
                 userType:req.body.userType,
             });        
             user.save().then((result)=>{
@@ -86,7 +86,7 @@ router.put('/:id',(req,res)=>{
             email:req.body.email,
             phoneNumber:req.body.phoneNumber,
             city:req.body.city,
-            pasword:String,
+            password:String,
             userType:String,
         }
     },(err,doc)=>{
@@ -132,7 +132,7 @@ router.post('/login',(req,res)=>{
             }
             
             docs.forEach(client=>{
-                bcrypt.compare(req.body.pasword,client.pasword,(err,result)=>{
+                bcrypt.compare(req.body.password,client.password,(err,result)=>{
                     // console.log(client);
                     if(!err)
                     {
